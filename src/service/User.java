@@ -23,4 +23,30 @@ public class User {
     void buyPremium (User owner, int month){
         this.behavior.buyPremium(owner, month);
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setBehavior(UserBehavior behavior) {
+        this.behavior = behavior;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public ArrayList<User> getFollowerList() {
+        return followerList;
+    }
+    public ArrayList<User> getFollowingList() {
+        return followingList;
+    }
+    public ArrayList<User> getAllUsers(){
+        return allUsers;
+    }
 }
