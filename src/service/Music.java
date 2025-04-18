@@ -14,6 +14,7 @@ public class Music {
         }
         this.title = title;
         this.singer = singer;
+        allMusics.add(this);
     }
 
     public void play() {

@@ -46,7 +46,7 @@ public class Playlist {
             playlist.remove(music);
     }
 
-    public ArrayList<Music> searchInPlaylist  (String title) {
+    public ArrayList<Music> searchInPlaylist(String title) {
         boolean found = false;
         ArrayList<Music> resault = new ArrayList<>();
         for (Music m : playlist) {
