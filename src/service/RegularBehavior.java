@@ -1,7 +1,7 @@
 package service;
 
 public class RegularBehavior implements UserBehavior{
-    private int playingLimit;
+    private int playingLimit = 5;
 
     @Override
     public void createPlaylist(String Title, User Owner) throws InvalidOperationException {
