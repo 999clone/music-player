@@ -36,11 +36,11 @@ public class User {
         followerList.add(user);
     }
 
-    public void createPlaylist (String Title, User Owner) throws InvalidOperationException {
-        if (Title == null || Title == "" || Owner == null) {
-            throw new InvalidOperationException("Title or Owner cannot be null");
+    public void createPlaylist (String Title) throws InvalidOperationException {
+        if (Title == null || Title.isEmpty()) {
+            throw new InvalidOperationException("Title cannot be null");
         }
-        this.behavior.createPlaylist(Title, Owner);
+        this.behavior.createPlaylist(Title, this);
     }
 
     public void playMusic (Music music) throws InvalidOperationException {
