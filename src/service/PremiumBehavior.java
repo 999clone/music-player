@@ -5,7 +5,7 @@ public class PremiumBehavior implements UserBehavior{
 
     @Override
     public void createPlaylist(String Title, User Owner) throws InvalidOperationException {
-        Playlist pl1 = new Playlist();
+        Playlist pl1 = new Playlist(Title, Owner);
     }
 
     @Override
