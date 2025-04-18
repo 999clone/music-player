@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) throws InvalidOperationException {
         int passed = 0, failed = 0;
 
-        // setup users and tracks
         User user1 = null;
         User user2 = null;
         try {
@@ -20,7 +19,7 @@ public class Main {
         Music track2 = new Music("SongB", user2);
         Playlist playlist = new Playlist("MyList", user1);
 
-        // test duplicate username
+        // test username
         try {
             new User("alice", "newPassword");
             System.out.println("Test duplicate username FAILED");
@@ -30,7 +29,7 @@ public class Main {
             passed++;
         }
 
-        // test short password
+        // test password
         try {
             new User("charlie", "short");
             System.out.println("Test short password FAILED");
@@ -40,7 +39,7 @@ public class Main {
             passed++;
         }
 
-        // test regular play limit
+        // test play limit
         try {
             for (int i = 0; i < 5; i++) {
                 user1.playMusic(track1);
@@ -86,7 +85,7 @@ public class Main {
             failed++;
         }
 
-        // test playlist operations
+        // test playlist
         try {
             try {
                 playlist.addMusic(track1, "wrongPass");
@@ -129,7 +128,7 @@ public class Main {
             failed++;
         }
 
-        // test premium behavior
+        // test premium
         try {
             user1.buyPremium(user1, 2);
             user1.createPlaylist("VIPList", user1);
