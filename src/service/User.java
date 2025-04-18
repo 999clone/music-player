@@ -81,6 +81,9 @@ public class User {
     public ArrayList<User> getAllUsers(){
         return allUsers;
     }
+    public ArrayList<Playlist> getPlaylists() {
+        return playlists;
+    }
 
     public boolean userValidator(String username, String password){
         if (username == null || username.equals("") || password == null || password.equals("")) {
