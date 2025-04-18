@@ -33,7 +33,7 @@ public class User {
     void playMusic (Music music) throws InvalidOperationException {
         this.behavior.playMusic(music);
     }
-    void buyPremium (User owner, int month){
+    void buyPremium (User owner, int month) throws InvalidOperationException {
         this.behavior.buyPremium(owner, month);
     }
 
@@ -47,6 +47,9 @@ public class User {
         this.behavior = behavior;
     }
 
+    public void addPlaylist (Playlist playlist){
+        this.playlists.add(playlist);
+    }
     public String getUsername() {
         return username;
     }
