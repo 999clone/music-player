@@ -20,6 +20,9 @@ public class Playlist {
         if (!owner.getPassword().equals(password)){
             throw new InvalidOperationException("incorrect password.");
         }
+        if (newTitle == null || newTitle.isEmpty()) {
+            throw new InvalidOperationException("Title cannot be empty");
+        }
         title = newTitle;
     }
 
@@ -44,11 +47,16 @@ public class Playlist {
     }
 
     public ArrayList<Music> searchInPlaylist  (String title) {
+        boolean found = false;
         ArrayList<Music> resault = new ArrayList<>();
         for (Music m : playlist) {
             if (m.getTitle().equals(title)) {
+                found = true;
                 resault.add(m);
             }
+        }
+        if (!found) {
+            return null;
         }
         return resault;
     }
