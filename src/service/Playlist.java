@@ -82,4 +82,25 @@ public class Playlist {
             m.play();
         }
     }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) throws InvalidOperationException {
+        if (title == null || title.isEmpty()) {
+            throw new InvalidOperationException("Title cannot be empty");
+        }
+        this.title = title;
+    }
+    public User getOwner() {
+        return owner;
+    }
+    public void setOwner(User owner) throws InvalidOperationException {
+        if (owner == null) {
+            throw new InvalidOperationException("Owner cannot be null");
+        }
+        this.owner = owner;
+    }
+    public ArrayList<Music> getPlaylist() {
+        return playlist;
+    }
 }

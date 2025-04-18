@@ -34,4 +34,15 @@ public class PremiumBehavior implements UserBehavior{
     public void buyPremium(User owner, int month) {
         this.month += month;
     }
+
+    public int getMonth() {
+        return month;
+    }
+    public void setMonth(int month) {
+        if (month < 1) {
+            throw new IllegalArgumentException("Invalid month");
+        }
+        this.month = month;
+    }
+
 }

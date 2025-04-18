@@ -45,13 +45,22 @@ public class Music {
         return null;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title) throws InvalidOperationException {
+        if (title.isEmpty()) {
+            throw  new InvalidOperationException("title cannot be empty");
+        }
         this.title = title;
     }
-    public void setSinger(User singer) {
+    public void setSinger(User singer) throws InvalidOperationException {
+        if (singer == null) {
+            throw new InvalidOperationException("singer cannot be null");
+        }
         this.singer = singer;
     }
-    public void setNumberOfStreams(int numberOfStreams) {
+    public void setNumberOfStreams(int numberOfStreams) throws InvalidOperationException {
+        if (numberOfStreams < 0) {
+            throw new InvalidOperationException("numberOfStreams cannot be negative");
+        }
         this.numberOfStreams = numberOfStreams;
     }
 
@@ -63,6 +72,9 @@ public class Music {
     }
     public int getNumberOfStreams() {
         return numberOfStreams;
+    }
+    public static ArrayList<Music> getAllMusics() {
+        return allMusics;
     }
 
 }
