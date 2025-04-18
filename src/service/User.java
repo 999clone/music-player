@@ -72,6 +72,9 @@ public class User {
     public String getPassword() {
         return password;
     }
+    public UserBehavior getBehavior() {
+        return behavior;
+    }
     public ArrayList<User> getFollowerList() {
         return followerList;
     }

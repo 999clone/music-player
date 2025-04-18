@@ -22,4 +22,14 @@ public class RegularBehavior implements UserBehavior{
     public void buyPremium(User owner, int month) throws InvalidOperationException {
         owner.setBehavior(new PremiumBehavior(month));
     }
+    public int getPlayingLimit() {
+        return playingLimit;
+    }
+    public void setPlayingLimit(int playingLimit) throws InvalidOperationException {
+        if (playingLimit <= 0) {
+            throw new InvalidOperationException("playing limit must be greater than 0.");
+        }
+        this.playingLimit = playingLimit;
+    }
+
 }
