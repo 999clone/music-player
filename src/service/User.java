@@ -11,11 +11,11 @@ public class User {
     private ArrayList<Playlist> playlists = new ArrayList<Playlist>();
     private static ArrayList<User> allUsers = new ArrayList<User>();
 
-    void follow (User user){
 
+    public void follow (User user){
     }
-    void createPlaylist (String Title, User Owner){
-        this.behavior.createPlaylist(title, owner);
+    void createPlaylist (String Title, User Owner) throws InvalidOperationException {
+        this.behavior.createPlaylist(Title, Owner);
     }
     void playMusic (Music music) throws InvalidOperationException {
         this.behavior.playMusic(music);
@@ -48,5 +48,17 @@ public class User {
     }
     public ArrayList<User> getAllUsers(){
         return allUsers;
+    }
+
+    public boolean userValidator(User user){
+        if (user.getUsername().isEmpty()){
+            System.out.println("Username is empty");
+            return false;
+        }
+        if (user.getPassword().isEmpty()){
+            System.out.println("Password is empty");
+            return false;
+        }
+        return true;
     }
 }
