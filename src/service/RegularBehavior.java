@@ -13,12 +13,13 @@ public class RegularBehavior implements UserBehavior{
         if (playingLimit <= 0) {
             throw new InvalidOperationException("you have reached your play limit. upgrade to primium to continue listining.");
         }
+        music.play();
         playingLimit--;
 
     }
 
     @Override
-    public void buyPremium(User owner, int month) {
-
+    public void buyPremium(User owner, int month) throws InvalidOperationException {
+        owner.setBehavior(new PremiumBehavior(month));
     }
 }

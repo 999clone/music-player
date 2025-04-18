@@ -14,7 +14,7 @@ public class User {
     public User(String username, String password) throws InvalidOperationException {
         for (User user : allUsers) {
             if (username.equals(user.getUsername())){
-                throw new InvalidOperationException("Username is already in use");
+                throw new InvalidOperationException("Username already exists");
             }
         }
         if (password.length() < 8) {
@@ -25,15 +25,31 @@ public class User {
         this.behavior = new RegularBehavior();
         allUsers.add(this);
     }
-    public void follow (User user){
+
+    public void follow (User user) throws InvalidOperationException {
+        if (user == null) {
+            throw new InvalidOperationException("User cannot be null");
+        }
+        if (followerList.contains(user)) {
+            throw new InvalidOperationException("User is already followed");
+        }
+        followerList.add(user);
     }
-    void createPlaylist (String Title, User Owner) throws InvalidOperationException {
+
+    public void createPlaylist (String Title, User Owner) throws InvalidOperationException {
+        if (Title == null || Title == "" || Owner == null) {
+            throw new InvalidOperationException("Title or Owner cannot be null");
+        }
         this.behavior.createPlaylist(Title, Owner);
     }
-    void playMusic (Music music) throws InvalidOperationException {
+
+    public void playMusic (Music music) throws InvalidOperationException {
+        if (music == null) {
+            throw new InvalidOperationException("Music cannot be null");
+        }
         this.behavior.playMusic(music);
     }
-    void buyPremium (User owner, int month){
+    public void buyPremium (User owner, int month) throws InvalidOperationException {
         this.behavior.buyPremium(owner, month);
     }
 
@@ -47,6 +63,9 @@ public class User {
         this.behavior = behavior;
     }
 
+    public void addPlaylist (Playlist playlist){
+        this.playlists.add(playlist);
+    }
     public String getUsername() {
         return username;
     }
