@@ -11,7 +11,20 @@ public class User {
     private ArrayList<Playlist> playlists = new ArrayList<Playlist>();
     private static ArrayList<User> allUsers = new ArrayList<User>();
 
-
+    public User(String username, String password) throws InvalidOperationException {
+        for (User user : allUsers) {
+            if (username.equals(user.getUsername())){
+                throw new InvalidOperationException("Username is already in use");
+            }
+        }
+        if (password.length() < 8) {
+            throw new InvalidOperationException("Password must be at least 8 characters");
+        }
+        this.username = username;
+        this.password = password;
+        this.behavior = new RegularBehavior();
+        allUsers.add(this);
+    }
     public void follow (User user){
     }
     void createPlaylist (String Title, User Owner) throws InvalidOperationException {
@@ -50,13 +63,8 @@ public class User {
         return allUsers;
     }
 
-    public boolean userValidator(User user){
-        if (user.getUsername().isEmpty()){
-            System.out.println("Username is empty");
-            return false;
-        }
-        if (user.getPassword().isEmpty()){
-            System.out.println("Password is empty");
+    public boolean userValidator(String username, String password){
+        if (username == null || username.equals("") || password == null || password.equals("")) {
             return false;
         }
         return true;
