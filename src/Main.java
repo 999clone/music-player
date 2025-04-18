@@ -131,7 +131,7 @@ public class Main {
         // test premium
         try {
             user1.buyPremium(user1, 2);
-            user1.createPlaylist("VIPList", user1);
+            user1.createPlaylist("VIPList");
             if (!user1.getPlaylists().isEmpty()) {
                 System.out.println("Test premium upgrade passed");
                 passed++;
@@ -141,6 +141,19 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println("Test premium behavior error: " + e.getMessage());
+            failed++;
+        }
+
+        try {
+            user1.follow(user2);
+            System.out.println("Test follow passed");
+            passed++;
+            if (!user1.getFollowerList().isEmpty()) {
+                System.out.println("Test followlist passed");
+                passed++;
+            }
+        }catch (InvalidOperationException e) {
+            System.out.println("Test follow pass failed");
             failed++;
         }
 
